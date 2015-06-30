@@ -1,7 +1,7 @@
 {
   "name": "tavern",
   "version": "0.1.0",
-  "description": "An ultra-simple, lightning fast, real-time web application framework for the modern web, with virtual servers and a built-in CMS.",
+  "description": "A lightning fast, real-time web framework, focused on making happy developers.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
