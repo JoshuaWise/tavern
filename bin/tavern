@@ -1,0 +1,42 @@
+#!/usr/bin/env node
+/*
+ * tavern
+ * https://github.com/JoshuaWise/tavern
+ *
+ * Copyright (c) 2015 Joshua Wise, contributors
+ * Licensed under the MIT license.
+ * https://github.com/JoshuaWise/tavern/LICENSE
+ */
+ 
+'use strict';
+process.title = 'tavern';
+
+var commands = {
+	'': require('../lib/cli-help'),
+	'help': require('../lib/cli-help'),
+	// 'update': require('../lib/commands/update'),
+	'init': require('../lib/commands/init'),
+	// 'open': require('../lib/commands/open'),
+	// 'close': require('../lib/commands/close'),
+	// 'restart': require('../lib/commands/restart'),
+	// 'cms': require('../lib/commands/cms'),
+	// 'clear': require('../lib/commands/clear')
+};
+
+var suppliedCommand = (function() {
+	var args = process.argv.slice(2);
+	for (var i=0, len=args.length; i<len; i++) {
+		if (args[i] && args[i].charAt(0) != '-') {return args[i];}
+	}
+	return '';
+}());
+
+if (commands.hasOwnProperty(suppliedCommand)) {
+	new commands[suppliedCommand](suppliedCommand);
+} else {
+	console.error('Invalid tavern command: \'' + suppliedCommand + '\'.\n');
+	console.log('Available commands:');
+	Object.getOwnPropertyNames(commands).forEach(function(commandName) {
+		console.log('\t' + commandName);
+	});
+}

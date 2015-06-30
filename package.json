@@ -9,6 +9,8 @@
     "type": "git",
     "url": "https://github.com/JoshuaWise/tavern.git"
   },
+  "bin": "./bin/tavern",
+  "preferGlobal": true,
   "keywords": [
     "webapp",
     "framework",
@@ -23,5 +25,9 @@
   "bugs": {
     "url": "https://github.com/JoshuaWise/tavern/issues"
   },
-  "homepage": "https://github.com/JoshuaWise/tavern"
+  "homepage": "https://github.com/JoshuaWise/tavern",
+  "dependencies": {
+    "nopt": "^3.0.3",
+    "strict-class": "^1.0.1"
+  }
 }
