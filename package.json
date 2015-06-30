@@ -1,0 +1,27 @@
+{
+  "name": "tavern",
+  "version": "0.1.0",
+  "description": "An ultra-simple, lightning fast, real-time web application framework for the modern web, with virtual servers and a built-in CMS.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JoshuaWise/tavern.git"
+  },
+  "keywords": [
+    "webapp",
+    "framework",
+    "websockets",
+    "node",
+    "reactive",
+    "mustache",
+    "full-stack"
+  ],
+  "author": "Joshua Wise <josh@joshuawise.ninja> (www.joshuawise.ninja)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JoshuaWise/tavern/issues"
+  },
+  "homepage": "https://github.com/JoshuaWise/tavern"
+}
