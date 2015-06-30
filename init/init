@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+command -v git >/dev/null 2>&1 && {
+	echo "Creating git repository..."
+	git init &&
+	git add . &&
+	git commit -am "---init---" 1>/dev/null &&
+	git tag -a 0.0.0 -m "---init---"
+}
