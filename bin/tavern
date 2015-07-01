@@ -12,15 +12,15 @@
 process.title = 'tavern';
 
 var commands = {
-	'': require('../lib/cli-help'),
-	'help': require('../lib/cli-help'),
-	// 'update': require('../lib/commands/update'),
-	'init': require('../lib/commands/init'),
-	// 'open': require('../lib/commands/open'),
-	// 'close': require('../lib/commands/close'),
-	// 'restart': require('../lib/commands/restart'),
-	// 'cms': require('../lib/commands/cms'),
-	// 'clear': require('../lib/commands/clear')
+	'': require('../lib/cli/help'),
+	'help': require('../lib/cli/help'),
+	// 'update': require('../lib/cli/commands/update'),
+	'init': require('../lib/cli/commands/init'),
+	'open': require('../lib/cli/commands/open'),
+	'close': require('../lib/cli/commands/close'),
+	// 'restart': require('../lib/cli/commands/restart'),
+	// 'cms': require('../lib/cli/commands/cms'),
+	// 'clear': require('../lib/cli/commands/clear')
 };
 
 var suppliedCommand = (function() {
