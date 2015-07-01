@@ -9,7 +9,7 @@
  */
  
 'use strict';
-process.title = 'tavern';
+process.title = 'tavern-cli';
 
 var commands = {
 	'': require('../lib/cli/help'),
@@ -19,6 +19,7 @@ var commands = {
 	'open': require('../lib/cli/commands/open'),
 	'close': require('../lib/cli/commands/close'),
 	// 'restart': require('../lib/cli/commands/restart'),
+	'log': require('../lib/cli/commands/log'),
 	// 'cms': require('../lib/cli/commands/cms'),
 	// 'clear': require('../lib/cli/commands/clear')
 };
@@ -39,4 +40,5 @@ if (commands.hasOwnProperty(suppliedCommand)) {
 	Object.getOwnPropertyNames(commands).forEach(function(commandName) {
 		if (commandName) console.log('\t' + commandName);
 	});
+	process.exit(1);
 }
