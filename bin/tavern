@@ -18,7 +18,7 @@ var commands = {
 	'init': require('../lib/cli/commands/init'),
 	'open': require('../lib/cli/commands/open'),
 	'close': require('../lib/cli/commands/close'),
-	// 'restart': require('../lib/cli/commands/restart'),
+	'restart': ['close', 'open'],
 	'log': require('../lib/cli/commands/log'),
 	// 'cms': require('../lib/cli/commands/cms'),
 	// 'clear': require('../lib/cli/commands/clear')
@@ -33,7 +33,12 @@ var suppliedCommand = (function() {
 }());
 
 if (commands.hasOwnProperty(suppliedCommand)) {
-	new commands[suppliedCommand](suppliedCommand);
+	var action = commands[suppliedCommand];
+	if (Array.isArray(action)) {
+		action.forEach(function(commandName) {new commands[commandName](commandName);});
+	} else {
+		new action(suppliedCommand);
+	}
 } else {
 	console.error('Invalid tavern command: \'' + suppliedCommand + '\'.\n');
 	console.log('Available commands:');
