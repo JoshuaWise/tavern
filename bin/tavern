@@ -20,6 +20,7 @@ var commands = {
 	'close': require('../lib/cli/commands/close'),
 	'restart': ['close', 'open'],
 	'log': require('../lib/cli/commands/log'),
+	'logs': require('../lib/cli/commands/log'),
 	// 'cms': require('../lib/cli/commands/cms'),
 	// 'clear': require('../lib/cli/commands/clear')
 };
