@@ -28,7 +28,9 @@ var commands = {
 var suppliedCommand = (function() {
 	var args = process.argv.slice(2);
 	for (var i=0, len=args.length; i<len; i++) {
-		if (args[i] && args[i].charAt(0) != '-') {return args[i];}
+		if (args[i] && args[i].charAt(0) != '-') {
+			return process.argv.splice(i + 2, 1)[0];
+		}
 	}
 	return '';
 }());
