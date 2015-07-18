@@ -28,6 +28,7 @@
   "homepage": "https://github.com/JoshuaWise/tavern",
   "dependencies": {
     "ansi-regex": "^2.0.0",
+    "bluebird": "^2.9.34",
     "cli-color": "^1.0.0",
     "find": "^0.2.2",
     "findup-sync": "^0.2.1",
