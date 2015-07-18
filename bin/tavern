@@ -25,6 +25,7 @@ var commands = {
 };
 
 (function main() {
+	setTimeout(function() {}, Infinity); // Keep CLI hanging until actions are done,
 	var suppliedCommand = require('../lib/cli/extract-next-argument')();
 	
 	if (!commands.hasOwnProperty(suppliedCommand)) {
@@ -51,10 +52,10 @@ var commands = {
 }());
 
 function commandNotFound(suppliedCommand) {
-	console.error('Invalid tavern command: \'' + suppliedCommand + '\'.\n');
+	console.error('Invalid tavern command: \'' + suppliedCommand + '\'.');
 	console.log('Available commands:');
 	Object.getOwnPropertyNames(commands).forEach(function(commandName) {
-		if (commandName) console.log('\t' + commandName);
+		if (commandName) console.log('      - ' + commandName);
 	});
 	process.exit(1);
 }
