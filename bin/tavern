@@ -10,6 +10,7 @@
  
 'use strict';
 process.title = 'tavern-cli';
+var extractNextArgument = require('../lib/cli/extract-next-argument');
 
 var commands = {
 	'': require('../lib/cli/help'),
@@ -18,31 +19,39 @@ var commands = {
 	'init': require('../lib/cli/commands/init'),
 	'open': require('../lib/cli/commands/open'),
 	'close': require('../lib/cli/commands/close'),
-	'restart': ['close', 'open'],
+	'restart': [require('../lib/cli/commands/close'), require('../lib/cli/commands/open')],
 	'log': require('../lib/cli/commands/log'),
-	'logs': require('../lib/cli/commands/log'),
 	// 'cms': require('../lib/cli/commands/cms'),
 	// 'clear': require('../lib/cli/commands/clear')
 };
 
-var suppliedCommand = (function() {
-	var args = process.argv.slice(2);
-	for (var i=0, len=args.length; i<len; i++) {
-		if (args[i] && args[i].charAt(0) != '-') {
-			return process.argv.splice(i + 2, 1)[0];
-		}
+(function main() {
+	var suppliedCommand = extractNextArgument();
+	
+	if (!commands.hasOwnProperty(suppliedCommand)) {
+		return commandNotFound(suppliedCommand);
 	}
-	return '';
+	
+	var actionSequence = Array.isArray(commands[suppliedCommand])
+		? commands[suppliedCommand]
+		: [commands[suppliedCommand]];
+	
+	function createDoneFunction() {
+		var alreadyCalled = false;
+		return function done() {
+			if (!alreadyCalled) {
+				alreadyCalled = true;
+				var action = actionSequence.shift();
+				if (action == null) process.exit(0);
+				new action(createDoneFunction(), suppliedCommand);
+			}
+		};
+	}
+	
+	createDoneFunction()();
 }());
 
-if (commands.hasOwnProperty(suppliedCommand)) {
-	var action = commands[suppliedCommand];
-	if (Array.isArray(action)) {
-		action.forEach(function(commandName) {new commands[commandName](commandName);});
-	} else {
-		new action(suppliedCommand);
-	}
-} else {
+function commandNotFound(suppliedCommand) {
 	console.error('Invalid tavern command: \'' + suppliedCommand + '\'.\n');
 	console.log('Available commands:');
 	Object.getOwnPropertyNames(commands).forEach(function(commandName) {
