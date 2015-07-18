@@ -10,7 +10,6 @@
  
 'use strict';
 process.title = 'tavern-cli';
-var extractNextArgument = require('../lib/cli/extract-next-argument');
 
 var commands = {
 	'': require('../lib/cli/help'),
@@ -26,7 +25,7 @@ var commands = {
 };
 
 (function main() {
-	var suppliedCommand = extractNextArgument();
+	var suppliedCommand = require('../lib/cli/extract-next-argument')();
 	
 	if (!commands.hasOwnProperty(suppliedCommand)) {
 		return commandNotFound(suppliedCommand);
