@@ -1,2 +1,2 @@
 # tavern
-A lightning fast, real-time web framework, focused on making happy developers.
+A dead repo that I'm keeping around because I wrote a cool log parser for it.
