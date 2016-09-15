@@ -1,7 +1,7 @@
 {
   "name": "tavern",
   "version": "0.1.0",
-  "description": "A lightning fast, real-time web framework, focused on making happy developers.",
+  "description": "A dead repo that I'm keeping around because I wrote a cool log parser for it.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,15 +11,7 @@
   },
   "bin": "./bin/tavern",
   "preferGlobal": true,
-  "keywords": [
-    "webapp",
-    "framework",
-    "websockets",
-    "node",
-    "reactive",
-    "mustache",
-    "full-stack"
-  ],
+  "keywords": [],
   "author": "Joshua Wise <josh@joshuawise.ninja> (www.joshuawise.ninja)",
   "license": "MIT",
   "bugs": {
